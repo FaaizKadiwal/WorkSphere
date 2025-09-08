@@ -1,0 +1,239 @@
+﻿/* Base font size */
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Global body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    /* Sticky footer setup */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+    color: #258cfb;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+    a:hover {
+        color: #0d6efd;
+        text-decoration: underline;
+    }
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #258cfb, #0d6efd);
+    border: none;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #0d6efd, #258cfb);
+    }
+
+.btn-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border: none;
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        background: linear-gradient(135deg, #c0392b, #e74c3c);
+    }
+
+/* Form controls */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+    .form-control:focus {
+        border-color: #258cfb;
+        box-shadow: 0 0 0 0.2rem rgba(37, 140, 251, 0.25);
+    }
+
+/* Create/Edit form buttons */
+form .btn-primary,
+form .btn-success {
+    margin-top: 0.75rem;
+    display: inline-block;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+    .table thead {
+        background: linear-gradient(135deg, #258cfb, #0d6efd);
+        color: #fff;
+    }
+
+    .table th, .table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f9ff;
+        transition: background-color 0.2s;
+    }
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #258cfb, #0d6efd);
+    padding: 0.75rem 1rem;
+}
+
+    .navbar a {
+        color: #fff !important;
+        font-weight: 500;
+    }
+
+        .navbar a:hover {
+            color: #dfe9ff !important;
+        }
+
+/* Footer (always at bottom) */
+footer {
+    background: #2c3e50;
+    color: #ccc;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 1rem;
+    margin-top: auto; /* pushes footer to bottom */
+}
+
+    footer a {
+        color: #fff;
+    }
+
+        footer a:hover {
+            color: #258cfb;
+        }
+
+/* Cards */
+.card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #258cfb, #0d6efd);
+    color: #fff;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+/* Filter + Search bar styling */
+.search-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+    .search-filter-bar input[type="text"] {
+        flex: 1;
+        max-width: 300px;
+    }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #f9f9f9, #eaeaea);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #258cfb, #0d6efd);
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #0d6efd, #258cfb);
+    }
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #258cfb #f1f1f1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.nav-link.logout-link {
+    color: #212529;
+    font-size: medium;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+    .nav-link.logout-link:hover {
+        color: #0d6efd;
+        text-decoration: none;
+    }

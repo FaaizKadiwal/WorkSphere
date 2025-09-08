@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Dashboard</h1>
+
+    <!-- Quick Stats -->
+    <div class="row mb-2">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Employees</h6>
+                    <p class="h3 fw-bold text-primary">@ViewBag.EmployeeCount</p>
+                    <a asp-controller="Employees" asp-action="Index" class="btn btn-outline-primary btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Departments</h6>
+                    <p class="h3 fw-bold text-success">@ViewBag.DepartmentCount</p>
+                    <a asp-controller="Departments" asp-action="Index" class="btn btn-outline-success btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Clients</h6>
+                    <p class="h3 fw-bold text-warning">@ViewBag.ClientCount</p>
+                    <a asp-controller="Clients" asp-action="Index" class="btn btn-outline-warning btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Projects</h6>
+                    <p class="h3 fw-bold text-info">@ViewBag.ProjectCount</p>
+                    <a asp-controller="Projects" asp-action="Index" class="btn btn-outline-info btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="row mb-3 justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Assignments</h6>
+                    <p class="h3 fw-bold text-dark">@ViewBag.ProjectAssignmentCount</p>
+                    <a asp-controller="ProjectAssignments" asp-action="Index" class="btn btn-outline-dark btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Invoices</h6>
+                    <p class="h3 fw-bold text-danger">@ViewBag.InvoiceCount</p>
+                    <a asp-controller="Invoices" asp-action="Index" class="btn btn-outline-danger btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3 text-center">
+                <div class="card-body">
+                    <h6 class="card-title">Invoice Items</h6>
+                    <p class="h3 fw-bold text-secondary">@ViewBag.InvoiceItemCount</p>
+                    <a asp-controller="InvoiceItems" asp-action="Index" class="btn btn-outline-secondary btn-sm">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Employees per Department</h5>
+                    <canvas id="deptChart" style="max-height:220px"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Clients Growth</h5>
+                    <canvas id="clientChart" style="max-height:220px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- More Charts -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Invoices per Client</h5>
+                    <canvas id="invoiceChart" style="max-height:220px"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Projects per Department</h5>
+                    <canvas id="projectChart" style="max-height:220px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Employees per Department (Pie)
+    new Chart(document.getElementById('deptChart'), {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.DepartmentNames ?? new List<string>())),
+            datasets: [{
+                data: @Html.Raw(Json.Serialize(ViewBag.EmployeePerDepartment ?? new List<int>())),
+                backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1', '#20c997']
+            }]
+        }
+    });
+
+    // Clients Growth (Line)
+    new Chart(document.getElementById('clientChart'), {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.ClientMonths ?? new List<string>())),
+            datasets: [{
+                label: 'Clients',
+                data: @Html.Raw(Json.Serialize(ViewBag.ClientGrowth ?? new List<int>())),
+                borderColor: '#17a2b8',
+                backgroundColor: 'rgba(23,162,184,0.2)',
+                tension: 0.4,
+                fill: true
+            }]
+        }
+    });
+
+    // Invoices per Client (Bar)
+    new Chart(document.getElementById('invoiceChart'), {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.InvoiceClients ?? new List<string>())),
+            datasets: [{
+                label: 'Invoices',
+                data: @Html.Raw(Json.Serialize(ViewBag.InvoicesPerClient ?? new List<int>())),
+                backgroundColor: '#fd7e14'
+            }]
+        }
+    });
+
+    // Projects per Department (Doughnut)
+    new Chart(document.getElementById('projectChart'), {
+        type: 'doughnut',
+        data: {
+            labels: @Html.Raw(Json.Serialize(ViewBag.ProjectDeptNames ?? new List<string>())),
+            datasets: [{
+                data: @Html.Raw(Json.Serialize(ViewBag.ProjectsPerDepartment ?? new List<int>())),
+                backgroundColor: ['#6610f2', '#20c997', '#ffc107', '#e83e8c', '#17a2b8']
+            }]
+        }
+    });
+</script>

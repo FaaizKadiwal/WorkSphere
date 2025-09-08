@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EmployeeManagementSystem.Models.ProjectAssignment>
+
+@{
+    ViewData["Title"] = "Project Assignments";
+}
+
+<h1>Project Assignments</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<!-- 🔍 Search & Filter -->
+<form method="get" asp-action="Index" class="form-inline mb-3"> 
+    <div class="input-group">
+        <!-- Search -->
+        <input type="text" name="searchString" value="@Context.Request.Query["searchString"]"
+               class="form-control" placeholder="Search Assignment..." />
+
+        <!-- Filter by Employee -->
+        <select name="employeeId" class="form-control" asp-items="ViewBag.Employees">
+            <option value="">-- Filter by Employee --</option>
+        </select>
+
+        <!-- Filter by Project -->
+        <select name="projectId" class="form-control" asp-items="ViewBag.Projects">
+            <option value="">-- Filter by Project --</option>
+        </select>
+
+        <!-- Search button -->
+        <button type="submit" class="btn btn-outline-secondary" title="Search">
+            <i class="bi bi-search"></i>
+        </button>
+
+        <!-- Reset button -->
+        <a asp-action="Index" class="btn btn-outline-dark" title="Reset">
+            <i class="bi bi-arrow-counterclockwise"></i>
+        </a>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Employee)</th>
+            <th>@Html.DisplayNameFor(model => model.Project)</th>
+            <th>@Html.DisplayNameFor(model => model.AssignedDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.Employee?.Name ?? "—")</td>
+                <td>@(item.Project?.Name ?? "—")</td>
+                <td>@item.AssignedDate.ToShortDateString()</td>
+                <td>@item.Role</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
