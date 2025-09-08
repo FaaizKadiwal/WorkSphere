@@ -16,15 +16,6 @@ It provides organizations with a centralized platform to manage employees, depar
 
 ---
 
-## Preview  
-
-### Dashboard  
-![Dashboard Preview](./screenshots/dashboard.png)  
-
-*(Dashboard preview of WorkSphere – Employee Management System)*  
-
----
-
 ## Tech Stack  
 
 - **Framework:** ASP.NET Core 8.0 MVC  
