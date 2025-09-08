@@ -61,10 +61,3 @@ The application will start at `https://localhost:5001` (or your configured port)
 This project was built as a part of learning **.NET Entity Framework**.  
 
 ---
-
-## License  
-
-This project is licensed under the **MIT License** – you are free to use, modify, and distribute it with proper attribution.  
-See the [LICENSE](./LICENSE) file for details.  
-
----
