@@ -1,11 +1,11 @@
-# WorkSphere  
+# 👤 WorkSphere  
 
 WorkSphere is a modern **Employee Management System** built with **ASP.NET Core 8.0 MVC**.  
 It provides organizations with a centralized platform to manage employees, departments, projects, clients, assignments, and invoices in a structured and efficient manner.  
 
 ---
 
-## Features  
+## ✨ Features  
 
 - 🔐 **Secure Authentication** – Admin login/logout with ASP.NET Identity.  
 - 👥 **Employee & Department Management** – Add, update, and organize employees and departments.  
@@ -16,7 +16,7 @@ It provides organizations with a centralized platform to manage employees, depar
 
 ---
 
-## Tech Stack  
+## 🧰 Tech Stack  
 
 - **Framework:** ASP.NET Core 8.0 MVC  
 - **Database:** Microsoft SQL Server with Entity Framework Core  
@@ -26,7 +26,7 @@ It provides organizations with a centralized platform to manage employees, depar
 
 ---
 
-## Project Structure  
+## 📁 Project Structure  
 
 - **Models** – Data models including entities and view models  
 - **Controllers** – Handles application logic and routes  
@@ -36,7 +36,7 @@ It provides organizations with a centralized platform to manage employees, depar
 
 ---
 
-## Getting Started  
+## 💡 Getting Started  
 
 1. Clone the repository  
 2. Update the connection string in `appsettings.json`  
@@ -47,8 +47,16 @@ The application will start at `https://localhost:5001` (or your configured port)
 
 ---
 
-## Note  
+## 📌 Note  
 
 This project was built as a part of learning **.NET Entity Framework**.  
+
+---
+
+## 📬 Contact
+
+For queries, please reach out to:  
+📧 faaiz12rahim@gmail.com  
+🔗 [LinkedIn: faaiz-kadiwal](https://www.linkedin.com/in/faaiz-kadiwal-a872942b9/)  
 
 ---
